@@ -1,8 +1,15 @@
 package com.twu.biblioteca;
 
-public class BibliotecaApp {
+import java.io.PrintStream;
 
-    public static void main(String[] args) {
-        System.out.println("Hello, world!");
+public class BibliotecaApp {
+    PrintStream printStream;
+
+    public BibliotecaApp(PrintStream printStream) {
+        this.printStream = printStream;
+    }
+
+    public void welcomeMessage() {
+        printStream.println("Welcome!");
     }
 }
