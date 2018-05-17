@@ -16,7 +16,7 @@ public class BibliotecaTests {
     private PrintStream printStream;
 
     @Test
-    public void shouldPrintWelcomeMessage() {
+    public void testPrintsWelcomeMessage() {
         printStream = mock(PrintStream.class);
         BibliotecaApp bib = new BibliotecaApp(printStream);
         bib.welcomeMessage();
@@ -24,4 +24,11 @@ public class BibliotecaTests {
         verify(printStream).println("Welcome!");
     }
 
+    @Test
+    public void testPrintsListOfBooks() {
+        printStream = mock(PrintStream.class);
+        BibliotecaApp bib = new BibliotecaApp(printStream);
+        bib.listBooks();
+        verify(printStream).println("Moby Dick, Half a Yellow Sun");
+    }
 }

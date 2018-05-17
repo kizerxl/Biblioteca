@@ -12,4 +12,8 @@ public class BibliotecaApp {
     public void welcomeMessage() {
         printStream.println("Welcome!");
     }
+
+    public void listBooks() {
+        printStream.println("Moby Dick, Half a Yellow Sun");
+    }
 }
