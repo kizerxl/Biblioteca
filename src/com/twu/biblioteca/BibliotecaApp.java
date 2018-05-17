@@ -1,12 +1,15 @@
 package com.twu.biblioteca;
 
 import java.io.PrintStream;
+import java.util.ArrayList;
 
 public class BibliotecaApp {
     PrintStream printStream;
+    ArrayList<Book> books;
 
-    public BibliotecaApp(PrintStream printStream) {
+    public BibliotecaApp(PrintStream printStream, ArrayList books) {
         this.printStream = printStream;
+        this.books = books;
     }
 
     public void welcomeMessage() {
@@ -14,6 +17,8 @@ public class BibliotecaApp {
     }
 
     public void listBooks() {
-        printStream.println("Moby Dick, Half a Yellow Sun");
+        for(Book book: books) {
+            book.displayDetails();
+        }
     }
 }
