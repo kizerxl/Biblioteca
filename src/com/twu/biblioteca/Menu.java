@@ -9,9 +9,9 @@ public class Menu {
     private PrintStream printStream;
     ArrayList<String> menuOptions;
     private String userInput = "";
-    private BibliotecaApp library;
+    private Library library;
 
-    public Menu(PrintStream printStream, ArrayList<String> menuOptions, BibliotecaApp library) {
+    public Menu(PrintStream printStream, ArrayList<String> menuOptions, Library library) {
         this.printStream = printStream;
         this.menuOptions = menuOptions;
         this.library = library;
@@ -26,10 +26,6 @@ public class Menu {
         try {
             userInput = bufferedReader.readLine();
 
-            System.out.println(
-
-
-            );
             if(userInput.equals("List Book")) {
                 library.listBooks();
             }

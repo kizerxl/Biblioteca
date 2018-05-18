@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.BufferedReader;
@@ -7,23 +8,31 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class MenuTest {
+    private ArrayList<String> menuOptions;
+    private PrintStream printStream;
+    private Library library;
+    private BufferedReader bufferedReader;
+    private Menu menu;
+
+
+    @Before
+    public void setUp() {
+        menuOptions = new ArrayList<String>();
+        printStream = mock(PrintStream.class);
+        library = mock(Library.class);
+        bufferedReader = mock(BufferedReader.class);
+        menu = new Menu(printStream, menuOptions, library);
+    }
+
     @Test
     public void testMenuGiveOptionToListBooks() throws IOException {
-        ArrayList<String> menuOptions = new ArrayList<String>();
-        String option1 = "List Books";
+        String option1 = "List Book";
         menuOptions.add(option1);
-
-        PrintStream printStream = mock(PrintStream.class);
-        BibliotecaApp bib = mock(BibliotecaApp.class);
-        BufferedReader bufferedReader = mock(BufferedReader.class);
-
-        Menu menu = new Menu(printStream, menuOptions, bib);
 
         when((bufferedReader).readLine()).thenReturn("List Book");
         menu.displayMenu(bufferedReader);
@@ -35,19 +44,11 @@ public class MenuTest {
     
     @Test
     public void testBooksGetListedWhenUserChoosesOptionToListBooks() throws IOException {
-        PrintStream printStream = mock(PrintStream.class);
-        BibliotecaApp bib = mock(BibliotecaApp.class);
-        BufferedReader bufferedReader = mock(BufferedReader.class);
-
-        ArrayList<String> menuOptions = new ArrayList<String>();
-        String option1 = "List Books";
-        menuOptions.add(option1);
-
-        Menu menu = new Menu(printStream, menuOptions, bib);
+        Menu menu = new Menu(printStream, menuOptions, library);
 
         when((bufferedReader).readLine()).thenReturn("List Book");
         menu.displayMenu(bufferedReader);
 
-        verify(bib).listBooks();
+        verify(library).listBooks();
     }
 }

@@ -3,11 +3,11 @@ package com.twu.biblioteca;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
-public class BibliotecaApp {
+public class Library {
     PrintStream printStream;
     ArrayList<Book> books;
 
-    public BibliotecaApp(PrintStream printStream, ArrayList books) {
+    public Library(PrintStream printStream, ArrayList books) {
         this.printStream = printStream;
         this.books = books;
     }

@@ -8,13 +8,13 @@ public class Main {
     private static ArrayList<Book> books;
     private static ArrayList<String> menuOptions;
     private static Menu menu;
-    private static BibliotecaApp bibApp;
+    private static Library bibApp;
 
     public static void main(String[] args) {
         createBooks();
 
-        bibApp = new BibliotecaApp(System.out, books);
-        
+        bibApp = new Library(System.out, books);
+
         createMenu();
 
         bibApp.welcomeMessage();
