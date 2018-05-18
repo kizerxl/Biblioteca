@@ -23,10 +23,6 @@ public class BibliotecaTests {
     public void setUp() {
         printStream = mock(PrintStream.class);
         books = new ArrayList<Book>();
-        book1 = mock(Book.class);
-        book2 = mock(Book.class);
-        books.add(book1);
-        books.add(book2);
         bib = new BibliotecaApp(printStream, books);
     }
 
@@ -39,8 +35,14 @@ public class BibliotecaTests {
 
     @Test
     public void testPrintsListOfBooks() {
+        book1 = mock(Book.class);
+        book2 = mock(Book.class);
+        books.add(book1);
+        books.add(book2);
         bib.listBooks();
-        verify(printStream).println("Moby Dick, Half a Yellow Sun");
+
+        when((book1).displayDetails()).thenReturn("myBook1");
+        when((book2).displayDetails()).thenReturn("myBook2");
     }
 
     @Test
