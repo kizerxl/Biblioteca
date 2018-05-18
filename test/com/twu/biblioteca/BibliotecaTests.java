@@ -4,13 +4,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.PrintStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class BibliotecaTests {
 
@@ -24,6 +24,10 @@ public class BibliotecaTests {
         printStream = mock(PrintStream.class);
         books = new ArrayList<Book>();
         bib = new BibliotecaApp(printStream, books);
+        book1 = mock(Book.class);
+        book2 = mock(Book.class);
+        books.add(book1);
+        books.add(book2);
     }
 
     @Test
@@ -35,10 +39,6 @@ public class BibliotecaTests {
 
     @Test
     public void testPrintsListOfBooks() {
-        book1 = mock(Book.class);
-        book2 = mock(Book.class);
-        books.add(book1);
-        books.add(book2);
         bib.listBooks();
 
         when((book1).displayDetails()).thenReturn("myBook1");
@@ -47,9 +47,15 @@ public class BibliotecaTests {
 
     @Test
     public void testPrintListOfBooksWithAuthorAndYearPublished() {
+        when((book1).displayDetails()).thenReturn("myBook1");
+        when((book2).displayDetails()).thenReturn("myBook2");
+
         bib.listBooks();
+
         for (Book book: books) {
             verify(book).displayDetails();
+            verify(printStream).println(book.displayDetails());
         }
     }
+
 }

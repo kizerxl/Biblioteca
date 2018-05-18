@@ -10,7 +10,7 @@ public class Book {
     }
 
     public String displayDetails() {
-//        "Moby Dick\tHerman Melville\t1851";
-        return title+"\t"+author+"\t"+year;
+        String result = title+"\t"+author+"\t"+year;
+        return result;
     }
 }

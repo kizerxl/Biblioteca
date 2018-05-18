@@ -18,7 +18,7 @@ public class BibliotecaApp {
 
     public void listBooks() {
         for(Book book: books) {
-            book.displayDetails();
+            printStream.println(book.displayDetails());
         }
     }
 }
